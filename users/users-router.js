@@ -7,7 +7,7 @@ router.get('/', (req, res) => {
         .then(users => {
             res.json(users);
         })
-        .catch( err => res.send({ message: 'Could not get those credentials please try again later.', err }));
+        .catch( err => res.send({ message: 'You shall not pass!', err }));
 });
 
 module.exports = router;

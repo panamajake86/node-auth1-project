@@ -26,11 +26,11 @@ router.post('/login', async (req, res) => {
             if (log && bcrypt.compareSync(password, log.password)) {
                 res.status(200).json({ message: `Welcome ${log.username}!` });
             } else {
-                res.status(401).json({ message: 'Invalid Credentials' });
+                res.status(401).json({ message: 'You shall not pass!' });
             }
         })
         .catch (err => {
-        res.status(500).json({ message: 'Could not login, please try again later.', err });
+        res.status(500).json({ message: 'You shall not pass!', err });
     });
 
 });
