@@ -24,7 +24,6 @@ router.post('/login', async (req, res) => {
         .first()
         .then(log => {
             if (log && bcrypt.compareSync(password, log.password)) {
-              console.log(req.session);  
               req.session.loggedin = true;
                 res.status(200).json({ message: `Welcome ${log.username}!` });
             } else {
