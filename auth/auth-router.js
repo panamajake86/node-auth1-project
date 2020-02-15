@@ -24,6 +24,7 @@ router.post('/login', async (req, res) => {
         .first()
         .then(log => {
             if (log && bcrypt.compareSync(password, log.password)) {
+                req.session.loggedin = true;
                 res.status(200).json({ message: `Welcome ${log.username}!` });
             } else {
                 res.status(401).json({ message: 'You shall not pass!' });
@@ -34,5 +35,19 @@ router.post('/login', async (req, res) => {
     });
 
 });
+
+router.delete('/logout', (req, res) => {
+    if (req.session) {
+      req.session.destroy((err) => {
+        if (err) {
+          res.status(400).send('we thought you was a toad!');
+        } else {
+          res.send('I am the paterfamilias');
+        }
+      });
+    } else {
+      res.end();
+    }
+  });
 
 module.exports = router;
