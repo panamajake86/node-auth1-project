@@ -29,7 +29,7 @@ const sessionOptions = {
 
 configureMiddleware(server);
 
+server.use(session(sessionOptions));
 server.use('/api', apiRouter);
-server.use(session(sessionOptions))
 
 module.exports = server;
